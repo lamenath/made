@@ -65,7 +65,7 @@ block body
 
         when 'section-heading'
           - var txt = slice.value.toArray()[0]
-          h2
+          h2.section-heading
             = txt.asText()
 
         when 'featured-text'
@@ -78,39 +78,42 @@ block body
                 = txt.get('summary').asText()
               if (txt.get('read-more-label'))
                 - var link = txt.get('read-more') ? txt.get('read-more').url(ctx.linkResolver) : '#'
-                a(href=link)
+                a.button(href=link)
                   = txt.get('read-more-label').asText() + ' >'
 
         when 'featured-large'
           - var feature = slice.value.toArray()[0]
           - var illustration = feature.get('illustration') ? feature.get('illustration').main.url : ''
-          - var isLeft = feature.get('side') ? (feature.get('side').asText() === 'left') : false;
-          div(style='background-image: url(' + illustration + ')', class=isLeft ? 'over-left' : 'over-right')
-            .overbox
-                span
-                  = feature.get('top-label').asText()
-                h3
-                  = feature.get('title').asText()
-                hr
-                if (feature.get('read-more-label'))
-                  - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
-                  a(href=link).btn
-                    = feature.get('read-more-label').asText()
+          - var isLeft = feature.get('side') ? (feature.get('side').asText() === 'left') : true;
+          div.featured-large.centered-layout
+            div.illustration(style='background-image: url(' + illustration + ')', class=isLeft ? 'illustration--left' : 'illustration--right')
+            div.text
+              span.label-top
+                = feature.get('top-label').asText()
+              span.title
+                = feature.get('title').asText()
+              hr
+              p.summary
+                = feature.get('summary').asText()
+              if (feature.get('read-more-label'))
+                - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
+                a.button(href=link)
+                  = feature.get('read-more-label').asText()
 
         when 'featured-large-image'
           - var feature = slice.value.toArray()[0]
           - var illustration = feature.get('illustration') ? feature.get('illustration').main.url : ''
           - var isLeft = feature.get('side') ? (feature.get('side').asText() === 'left') : false;
           .featured-large-image(Style='background-image: url(' + illustration + ')').centered-layout
-            .box(class=isLeft ? 'box--left' : 'box--right')
+            .text(class=isLeft ? 'text--left' : 'text--right')
               span.top-label
                 = feature.get('top-label').asText()
               span.title
                 = feature.get('title').asText()
-              <hr/>
+              hr
               if (feature.get('read-more-label'))
                 - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
-                a(href=link).btn
+                a.button(href=link)
                   = feature.get('read-more-label').asText()
 
         when 'featured-medium'
@@ -122,7 +125,7 @@ block body
                   img(src=illustration)
                 h4
                   = feature.get('title').asText()
-                p
+                p.summary
                   = feature.get('summary').asText()
                 if (feature.get('read-more-label'))
                   - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
