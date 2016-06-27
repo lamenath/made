@@ -8,20 +8,14 @@
 -   return byTab;
 - }
 
-.marketing.row
-  .col-md-12
-    - var byTab = sortByTabs(slice.value.toArray())
-    div
-      = ' '
-    each categories, index in byTab
-      .row.category-group(data-tab=index)
-        if (categories)
-          for category in categories
-            - var link = category.getLink('link')
-            - var illustration = category.get('illustration') ? category.get('illustration').main.url : ''
-            .col-md-3.typeblock
-              .img-box
-                img(src=illustration)
-              if link
-                a.label(href=link.url(ctx.linkResolver))
-                  = category.get('title').asText()
+.categories.centered-layout
+  - var categories = slice.value.toArray()
+  if (categories)
+    for category in categories
+      - var link = category.getLink('link')
+      - var illustration = category.get('illustration') ? category.get('illustration').main.url : ''
+      .category
+        img(src=illustration)
+        if link
+          a.label(href=link.url(ctx.linkResolver))
+            = category.get('title').asText()

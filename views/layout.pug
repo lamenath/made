@@ -2,14 +2,13 @@ doctype html(lang='en')
 
 head
     title made.com
-    link(href="https://fonts.googleapis.com/css?family=Kameron", rel="stylesheet", type="ext/css")
-    link(href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900", rel="stylesheet", type="text/css")
     meta(name="viewport", content="width=device-width, initial-scale=1")
 
     // Site-specific style
-    link(href="https://fonts.googleapis.com/css?family=Montserrat", rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css?family=Kameron", rel="stylesheet", type="text/css")
+    link(rel="stylesheet", href="/stylesheets/reset.css")
     link(rel="stylesheet", href="/stylesheets/style.css")
-  
+
     // Required for Previews and Experiments
     script
       = ctx?"window.prismic = { endpoint: '" + ctx.endpoint + "' };":""

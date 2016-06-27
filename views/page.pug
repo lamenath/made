@@ -13,8 +13,8 @@ block body
         span.glyphicon.glyphicon-shopping-cart
       h1.text-center COMPANY
 
-    hr.after-title
-    .header.clearfix
+    hr
+    .header
       nav.main-nav
         ul.nav.nav-justified
           li(role='presentation')
@@ -39,17 +39,16 @@ block body
             a(href='#') Outdoor
           li(role='presentation')
             a(href='#') Last&nbsp;chance
-    .jumbotron
-      .inner
-        h3.title.text-center(data-wio-id=page.id)
-          = page.get('page.title').asText()
-        p.description.lead.text-center
-          = page.get('page.description').asText()
+    header
+      h1(data-wio-id=page.id)
+        = page.get('page.title').asText()
+      p
+        = page.get('page.description').asText()
 
     for slice in page.get('page.body').slices
       //- Render the right markup for a given slice type.
       case slice.sliceType
-        
+
         when 'featured-tab'
           .row.filter-buttons
             .col-md-offset-3.col-md-6.text-center
@@ -57,18 +56,18 @@ block body
                 for tab in slice.value.toArray()
                   button.btn.btn-default(type='button')
                     = tab.get('label') ? tab.get('label').asText() : 'Noname'
-      
+
         when 'featured-categories'
           include partials/categories
 
         when 'separator'
-          hr.separator
+          div.separator
 
         when 'section-heading'
           - var txt = slice.value.toArray()[0]
-          h2.text-center 
+          h2
             = txt.asText()
-        
+
         when 'featured-text'
           - var txt = slice.value.toArray()[0]
           .row.text-block
@@ -82,38 +81,37 @@ block body
                 a(href=link)
                   = txt.get('read-more-label').asText() + ' >'
 
-        when 'featured-large-image'
+        when 'featured-large'
           - var feature = slice.value.toArray()[0]
           - var illustration = feature.get('illustration') ? feature.get('illustration').main.url : ''
           - var isLeft = feature.get('side') ? (feature.get('side').asText() === 'left') : false;
           div(style='background-image: url(' + illustration + ')', class=isLeft ? 'over-left' : 'over-right')
             .overbox
-              .inner
-                p
-                  = feature.get('top-label').asText()
-                h2
-                  = feature.get('title').asText()
-                hr
-                if (feature.get('read-more-label'))
-                  - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
-                  a(href=link).btn.btn-default
-                    = feature.get('read-more-label').asText()
-                  
-        when 'featured-large'
-          - var feature = slice.value.toArray()[0]
-          - var illustration = feature.get('illustration') ? feature.get('illustration').main.url : ''
-          .row.new-full.vertical-align
-            .col-md-6.imagebox(style='background-image: url(' + illustration + ')')
-            .col-md-6
-              .large-panel
-                p
+                span
                   = feature.get('top-label').asText()
                 h3
                   = feature.get('title').asText()
                 hr
-                p
-                  = feature.get('summary').asText()
-                button.btn.btn-default(type='button') shop
+                if (feature.get('read-more-label'))
+                  - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
+                  a(href=link).btn
+                    = feature.get('read-more-label').asText()
+
+        when 'featured-large-image'
+          - var feature = slice.value.toArray()[0]
+          - var illustration = feature.get('illustration') ? feature.get('illustration').main.url : ''
+          - var isLeft = feature.get('side') ? (feature.get('side').asText() === 'left') : false;
+          .featured-large-image(Style='background-image: url(' + illustration + ')').centered-layout
+            .box(class=isLeft ? 'box--left' : 'box--right')
+              span.top-label
+                = feature.get('top-label').asText()
+              span.title
+                = feature.get('title').asText()
+              <hr/>
+              if (feature.get('read-more-label'))
+                - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
+                a(href=link).btn
+                  = feature.get('read-more-label').asText()
 
         when 'featured-medium'
           .row.item-list
@@ -131,9 +129,9 @@ block body
                   a(href=link)
                     = feature.get('read-more-label').asText() + ' >'
 
-        // default
-        //   p(style='color: red')
-        //     = "unkown: " + slice.sliceType
+        default
+          p(style='color: red')
+            = "unkown: " + slice.sliceType
 
     footer.footer
       p © 2015 Company, Inc.
@@ -148,4 +146,3 @@ block body
       });
     });
     $('.filter-buttons button:first').click();
-    

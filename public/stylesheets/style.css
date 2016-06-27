@@ -1,11 +1,46 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/montserrat-webfont.woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
- margin-top: 20px;
  font-family: 'Kameron', serif;
 }
 
-a:hover {
-  text-decoration: underline !important;
-  color: black !important;
+a {
+  text-decoration: none;
+  color: #151515;
+  font-size: 13px;
+}
+
+h1, h2, h3, a {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 200;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+h2 {
+}
+
+header {
+  background: #dbdbdb;
+  text-align: center;
+  padding: 60px;
+  margin-bottom: 40px;
+}
+
+header p {
+  width: 260px;
+  margin: auto;
+  line-height: 24px;
+  font-weight: 200;
 }
 
 .wio-link {
@@ -14,194 +49,80 @@ a:hover {
   right: 40px;
 }
 
-h2 {
-  margin-bottom: 20px;
+.centered-layout {
+  margin: 0 300px;
 }
 
-h1, h2, h3, button, .main-nav, .marketing {
-  font-family: 'Montserrat', sans-serif;
-}
-
-.main-nav {
-  margin-bottom: 10px;
-}
-
-.title {
-  font-size: 38px;
-  letter-spacing: 2px;
-}
-
-p.description {
-  width: 400px;
-  margin: auto;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-hr.after-title {
-  margin-bottom: 10px;
-}
-
-a {
-  color: black;
-}
-
-.jumbotron {
-  background: #dbdbdb;
-  margin-left: -500px;
-  margin-right: -500px;
-  margin-bottom: 40px;
-}
-
-.jumbotron .inner {
-  margin-left: 500px;
-  margin-right: 500px;
-}
-
-.vertical-align {
+.categories {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.vertical-align > [class^="col-"],
-.vertical-align > [class*=" col-"] {
+.categories .category {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center; /* Optional, to align inner items 
-                              horizontally inside the column */
+  width: 25%;
+  margin-bottom: 30px;
 }
 
-.header .glyphicon {
-  padding-left: 15px;
-  padding-top: 10px;
+.categories .category img {
+  width: 78%;
 }
 
-.container .jumbotron {
-  border-radius: 0;
+.categories .category a:after {
+  content: ' »';
 }
 
-.marketing {
-  height: 570px;
-  border-bottom: 2px solid #f2f2f2;
-}
-
-.marketing .label {
-  font-size: 13px;
-}
-
-.typeblock {
-  text-align: center;
-  padding: 30px;
-}
-
-.typeblock .img-box {
-  min-height: 172px;
-}
-
-.typeblock img {
-  width: 100%;
-}
-
-.typeblock a {
-  color: black;
-}
-
-.new-full {
-  border: 1px solid #DDD
-}
-
-.new-full .imagebox {
-  height: 600px;
-}
-
-.new-full .large-panel {
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-.btn {
-  padding: 5px 25px;
-  text-transform: uppercase;
-  border-radius: 0;
-}
-
-.over-right, .over-left {
-  margin-top: 20px;
-  margin-left: -15px;
-  margin-right: -15px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: 400px;
-}
-
-.overbox {
-  width: 300px;
-  height: 50%;
-  top: 25%; 
+.featured-large-image {
   position: relative;
-  display: table;
-  border: 1px solid black;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
-.overbox hr, .new-full hr {
-  height: 5px;
-  width: 30px;
-  background-color: black;
-}
-
-.over-right .overbox {
-  float: right;
-  right: 0;
-}
-
-.over-left .overbox {
-  float: left;
-  left: 0;
-}
-
-.over-right .overbox .inner, .over-left .overbox .inner {
-  display: table-cell;
-  vertical-align: middle;
-  background-color: white;
-  padding: 20px;
+.featured-large-image .box {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  display: inline-block;
+  padding: 40px 20px;
   text-align: center;
+  box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.12), 0px 1px 1px 0px rgba(0,0,0,0.10)
 }
 
-.item-list {
-  margin-top: 30px;
+.featured-large-image .box.box--right {
+  right: -20px;
 }
 
-.item-list .item {
-  padding-right: 0;
-  padding-left: 0;
+.featured-large-image .box.box--left {
+  left: -20px;
 }
 
-.item-list img {
-  width: 100%
+.featured-large-image .box a {
+  padding: 6px;
+  border: 1px solid;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  font-size: 14px;
 }
 
-.item-list .item {
-  text-align: center;
-  margin-bottom: 20px;
+.featured-large-image .box .top-label {
+  margin-top: 10px;
 }
 
-.text-block {
-  margin: 20px -15px;
-  border-top: 1px solid #CCC;
-  border-bottom: 1px solid #CCC;
-  padding: 30px 0;
+.featured-large-image .box .title {
+  display: block;
+  font-size: 40px;
+  width: 250px;
+  line-height: 46px
 }
 
-.text-block p {
-  color: #999
-}
-
-.footer {
-  margin-top: 100px;
-}
-
-.wio-link {
-  float: right;
+.featured-large-image .box hr {
+  border: 2px solid;
+  width: 20px;
+  margin-bottom: 40px;
 }
