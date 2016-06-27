@@ -16,6 +16,5 @@
       - var illustration = category.get('illustration') ? category.get('illustration').main.url : ''
       .category
         img(src=illustration)
-        if link
-          a.label(href=link.url(ctx.linkResolver))
-            = category.get('title').asText()
+        a.label(href= link ? link.url(ctx.linkResolver): '#')
+          = category.get('title').asText()

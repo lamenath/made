@@ -2,43 +2,33 @@ extends ./layout.pug
 
 block body
   .container
-    .header
-      .pull-left
-        span.glyphicon.glyphicon-flag
-        span.glyphicon
-        span.glyphicon
-      .pull-right
-        span.glyphicon.glyphicon-search
-        span.glyphicon.glyphicon-user
-        span.glyphicon.glyphicon-shopping-cart
-      h1.text-center COMPANY
-
+    div.logo
+      img(src='/images/MADE-logo.svg')
     hr
-    .header
-      nav.main-nav
-        ul.nav.nav-justified
-          li(role='presentation')
-            a(href='#') New
-          li(role='presentation')
-            a(href='#') Sofa&nbsp;&&nbsp;Armchairs
-          li(role='presentation')
-            a(href='#') Chairs
-          li(role='presentation')
-            a(href='#') Tables
-          li(role='presentation')
-            a(href='#') Storage
-          li(role='presentation')
-            a(href='#') Lighting
-          li(role='presentation')
-            a(href='#') Bedroom
-          li(role='presentation')
-            a(href='#') Kids
-          li(role='presentation')
-            a(href='#') Accessories
-          li(role='presentation')
-            a(href='#') Outdoor
-          li(role='presentation')
-            a(href='#') Last&nbsp;chance
+    nav.centered-layout
+      ul
+        li
+          a(href='#') New
+        li
+          a(href='#') Sofa&nbsp;&&nbsp;Armchairs
+        li
+          a(href='#') Chairs
+        li
+          a(href='#') Tables
+        li
+          a(href='#') Storage
+        li
+          a(href='#') Lighting
+        li
+          a(href='#') Bedroom
+        li
+          a(href='#') Kids
+        li
+          a(href='#') Accessories
+        li
+          a(href='#') Outdoor
+        li
+          a(href='#') Last&nbsp;chance
     header
       h1(data-wio-id=page.id)
         = page.get('page.title').asText()
@@ -50,12 +40,11 @@ block body
       case slice.sliceType
 
         when 'featured-tab'
-          .row.filter-buttons
-            .col-md-offset-3.col-md-6.text-center
-              .btn-group
-                for tab in slice.value.toArray()
-                  button.btn.btn-default(type='button')
-                    = tab.get('label') ? tab.get('label').asText() : 'Noname'
+          .featured-tab
+            div.tabs
+              for tab in slice.value.toArray()
+                button(type='button')
+                  = tab.get('label') ? tab.get('label').asText() : 'Noname'
 
         when 'featured-categories'
           include partials/categories
@@ -68,18 +57,31 @@ block body
           h2.section-heading
             = txt.asText()
 
-        when 'featured-text'
-          - var txt = slice.value.toArray()[0]
-          .row.text-block
-            .col-md-offset-2.col-md-8.text-center
-              h4
-                = txt.get('title').asText()
-              p
-                = txt.get('summary').asText()
-              if (txt.get('read-more-label'))
-                - var link = txt.get('read-more') ? txt.get('read-more').url(ctx.linkResolver) : '#'
+        when 'featured-horizontal'
+          - var feature = slice.value.toArray()[0]
+          - var illustration = feature.get('illustration') ? feature.get('illustration').main.url : ''
+          div.featured-horizontal
+            div.illustration(style='background-image: url(' + illustration + ')')
+            div.text
+              span.title
+                = feature.get('title').asText()
+              if (feature.get('read-more-label'))
+                - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
                 a.button(href=link)
-                  = txt.get('read-more-label').asText() + ' >'
+                  = feature.get('read-more-label').asText()
+
+
+        when 'featured-text'
+          - var feature = slice.value.toArray()[0]
+          .featured-text.centered-layout
+              span.title
+                = feature.get('title').asText()
+              p.summary
+                = feature.get('summary').asText()
+              if (feature.get('read-more-label'))
+                - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
+                a(href=link)
+                  = feature.get('read-more-label').asText()
 
         when 'featured-large'
           - var feature = slice.value.toArray()[0]
@@ -104,7 +106,7 @@ block body
           - var feature = slice.value.toArray()[0]
           - var illustration = feature.get('illustration') ? feature.get('illustration').main.url : ''
           - var isLeft = feature.get('side') ? (feature.get('side').asText() === 'left') : false;
-          .featured-large-image(Style='background-image: url(' + illustration + ')').centered-layout
+          div.featured-large-image.centered-layout(style='background-image: url(' + illustration + ')')
             .text(class=isLeft ? 'text--left' : 'text--right')
               span.top-label
                 = feature.get('top-label').asText()
@@ -117,20 +119,20 @@ block body
                   = feature.get('read-more-label').asText()
 
         when 'featured-medium'
-          .row.item-list
+          .featured-medium.centered-layout
             for feature in slice.value.toArray()
               - var illustration = feature.get('illustration') ? feature.get('illustration').main.url : null
-              .col-md-6.item
-                if (illustration)
-                  img(src=illustration)
-                h4
-                  = feature.get('title').asText()
-                p.summary
-                  = feature.get('summary').asText()
-                if (feature.get('read-more-label'))
-                  - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
-                  a(href=link)
-                    = feature.get('read-more-label').asText() + ' >'
+              .item
+                .illustration(style='background-image: url(' + illustration + ')')
+                .text
+                  span.title
+                    = feature.get('title').asText()
+                  p.summary
+                    = feature.get('summary').asText()
+                  if (feature.get('read-more-label'))
+                    - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
+                    a(href=link)
+                      = feature.get('read-more-label').asText()
 
         default
           p(style='color: red')
