@@ -1,0 +1,151 @@
+extends ./layout.pug
+
+block body
+  .container
+    .header
+      .pull-left
+        span.glyphicon.glyphicon-flag
+        span.glyphicon
+        span.glyphicon
+      .pull-right
+        span.glyphicon.glyphicon-search
+        span.glyphicon.glyphicon-user
+        span.glyphicon.glyphicon-shopping-cart
+      h1.text-center COMPANY
+
+    hr.after-title
+    .header.clearfix
+      nav.main-nav
+        ul.nav.nav-justified
+          li(role='presentation')
+            a(href='#') New
+          li(role='presentation')
+            a(href='#') Sofa&nbsp;&&nbsp;Armchairs
+          li(role='presentation')
+            a(href='#') Chairs
+          li(role='presentation')
+            a(href='#') Tables
+          li(role='presentation')
+            a(href='#') Storage
+          li(role='presentation')
+            a(href='#') Lighting
+          li(role='presentation')
+            a(href='#') Bedroom
+          li(role='presentation')
+            a(href='#') Kids
+          li(role='presentation')
+            a(href='#') Accessories
+          li(role='presentation')
+            a(href='#') Outdoor
+          li(role='presentation')
+            a(href='#') Last&nbsp;chance
+    .jumbotron
+      .inner
+        h3.title.text-center(data-wio-id=page.id)
+          = page.get('page.title').asText()
+        p.description.lead.text-center
+          = page.get('page.description').asText()
+
+    for slice in page.get('page.body').slices
+      //- Render the right markup for a given slice type.
+      case slice.sliceType
+        
+        when 'featured-tab'
+          .row.filter-buttons
+            .col-md-offset-3.col-md-6.text-center
+              .btn-group
+                for tab in slice.value.toArray()
+                  button.btn.btn-default(type='button')
+                    = tab.get('label') ? tab.get('label').asText() : 'Noname'
+      
+        when 'featured-categories'
+          include partials/categories
+
+        when 'separator'
+          hr.separator
+
+        when 'section-heading'
+          - var txt = slice.value.toArray()[0]
+          h2.text-center 
+            = txt.asText()
+        
+        when 'featured-text'
+          - var txt = slice.value.toArray()[0]
+          .row.text-block
+            .col-md-offset-2.col-md-8.text-center
+              h4
+                = txt.get('title').asText()
+              p
+                = txt.get('summary').asText()
+              if (txt.get('read-more-label'))
+                - var link = txt.get('read-more') ? txt.get('read-more').url(ctx.linkResolver) : '#'
+                a(href=link)
+                  = txt.get('read-more-label').asText() + ' >'
+
+        when 'featured-large-image'
+          - var feature = slice.value.toArray()[0]
+          - var illustration = feature.get('illustration') ? feature.get('illustration').main.url : ''
+          - var isLeft = feature.get('side') ? (feature.get('side').asText() === 'left') : false;
+          div(style='background-image: url(' + illustration + ')', class=isLeft ? 'over-left' : 'over-right')
+            .overbox
+              .inner
+                p
+                  = feature.get('top-label').asText()
+                h2
+                  = feature.get('title').asText()
+                hr
+                if (feature.get('read-more-label'))
+                  - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
+                  a(href=link).btn.btn-default
+                    = feature.get('read-more-label').asText()
+                  
+        when 'featured-large'
+          - var feature = slice.value.toArray()[0]
+          - var illustration = feature.get('illustration') ? feature.get('illustration').main.url : ''
+          .row.new-full.vertical-align
+            .col-md-6.imagebox(style='background-image: url(' + illustration + ')')
+            .col-md-6
+              .large-panel
+                p
+                  = feature.get('top-label').asText()
+                h3
+                  = feature.get('title').asText()
+                hr
+                p
+                  = feature.get('summary').asText()
+                button.btn.btn-default(type='button') shop
+
+        when 'featured-medium'
+          .row.item-list
+            for feature in slice.value.toArray()
+              - var illustration = feature.get('illustration') ? feature.get('illustration').main.url : null
+              .col-md-6.item
+                if (illustration)
+                  img(src=illustration)
+                h4
+                  = feature.get('title').asText()
+                p
+                  = feature.get('summary').asText()
+                if (feature.get('read-more-label'))
+                  - var link = feature.get('read-more') ? feature.get('read-more').url(ctx.linkResolver) : '#'
+                  a(href=link)
+                    = feature.get('read-more-label').asText() + ' >'
+
+        // default
+        //   p(style='color: red')
+        //     = "unkown: " + slice.sliceType
+
+    footer.footer
+      p © 2015 Company, Inc.
+
+  script(type='text/javascript').
+    $('.filter-buttons button').on('click', function() {
+      var $button = $(this);
+      var idx = $button.index() + 1;
+      var $blocks = $button.parents('.filter-buttons').next('.marketing').find('.category-group');
+      $blocks.not('[data-tab="' + idx + '"]').fadeOut(200, function() {
+        $blocks.filter('[data-tab="' + idx + '"]').fadeIn(200);
+      });
+    });
+    $('.filter-buttons button:first').click();
+    

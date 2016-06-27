@@ -1,0 +1,207 @@
+body {
+ margin-top: 20px;
+ font-family: 'Kameron', serif;
+}
+
+a:hover {
+  text-decoration: underline !important;
+  color: black !important;
+}
+
+.wio-link {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+h1, h2, h3, button, .main-nav, .marketing {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.main-nav {
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 38px;
+  letter-spacing: 2px;
+}
+
+p.description {
+  width: 400px;
+  margin: auto;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+hr.after-title {
+  margin-bottom: 10px;
+}
+
+a {
+  color: black;
+}
+
+.jumbotron {
+  background: #dbdbdb;
+  margin-left: -500px;
+  margin-right: -500px;
+  margin-bottom: 40px;
+}
+
+.jumbotron .inner {
+  margin-left: 500px;
+  margin-right: 500px;
+}
+
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Optional, to align inner items 
+                              horizontally inside the column */
+}
+
+.header .glyphicon {
+  padding-left: 15px;
+  padding-top: 10px;
+}
+
+.container .jumbotron {
+  border-radius: 0;
+}
+
+.marketing {
+  height: 570px;
+  border-bottom: 2px solid #f2f2f2;
+}
+
+.marketing .label {
+  font-size: 13px;
+}
+
+.typeblock {
+  text-align: center;
+  padding: 30px;
+}
+
+.typeblock .img-box {
+  min-height: 172px;
+}
+
+.typeblock img {
+  width: 100%;
+}
+
+.typeblock a {
+  color: black;
+}
+
+.new-full {
+  border: 1px solid #DDD
+}
+
+.new-full .imagebox {
+  height: 600px;
+}
+
+.new-full .large-panel {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.btn {
+  padding: 5px 25px;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+
+.over-right, .over-left {
+  margin-top: 20px;
+  margin-left: -15px;
+  margin-right: -15px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 400px;
+}
+
+.overbox {
+  width: 300px;
+  height: 50%;
+  top: 25%; 
+  position: relative;
+  display: table;
+  border: 1px solid black;
+}
+
+.overbox hr, .new-full hr {
+  height: 5px;
+  width: 30px;
+  background-color: black;
+}
+
+.over-right .overbox {
+  float: right;
+  right: 0;
+}
+
+.over-left .overbox {
+  float: left;
+  left: 0;
+}
+
+.over-right .overbox .inner, .over-left .overbox .inner {
+  display: table-cell;
+  vertical-align: middle;
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.item-list {
+  margin-top: 30px;
+}
+
+.item-list .item {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.item-list img {
+  width: 100%
+}
+
+.item-list .item {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.text-block {
+  margin: 20px -15px;
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  padding: 30px 0;
+}
+
+.text-block p {
+  color: #999
+}
+
+.footer {
+  margin-top: 100px;
+}
+
+.wio-link {
+  float: right;
+}

@@ -1,0 +1,125 @@
+extends ./layout.pug
+
+block body
+  .container
+    .header
+      .pull-left
+        span.glyphicon.glyphicon-flag
+        span.glyphicon
+        span.glyphicon
+      .pull-right
+        span.glyphicon.glyphicon-search
+        span.glyphicon.glyphicon-user
+        span.glyphicon.glyphicon-shopping-cart
+      h1.text-center COMPANY
+
+    hr.after-title
+    .header.clearfix
+      nav.main-nav
+        ul.nav.nav-justified
+          li(role='presentation')
+            a(href='#') New
+          li(role='presentation')
+            a(href='#') Sofa&nbsp;&&nbsp;Armchairs
+          li(role='presentation')
+            a(href='#') Chairs
+          li(role='presentation')
+            a(href='#') Tables
+          li(role='presentation')
+            a(href='#') Storage
+          li(role='presentation')
+            a(href='#') Lighting
+          li(role='presentation')
+            a(href='#') Bedroom
+          li(role='presentation')
+            a(href='#') Kids
+          li(role='presentation')
+            a(href='#') Accessories
+          li(role='presentation')
+            a(href='#') Outdoor
+          li(role='presentation')
+            a(href='#') Last&nbsp;chance
+    .jumbotron
+      h3.text-center Sofas & Armchairs
+      p.lead.text-center
+        | Your sofa is the focal point of your living space, so make it a good looker.
+    .row.filter-buttons
+      .col-md-offset-3.col-md-6.text-center
+        .btn-group
+          button.btn.btn-default(type='button') by type
+          button.btn.btn-default(type='button') by material
+ 
+    .row.marketing
+      .col-md-3.typeblock
+        img(src='/images/sofa.jpg')
+        a(href='#') Armchairs >
+      .col-md-3.typeblock
+        img(src='/images/sofa.jpg')
+        a(href='#') Armchairs >
+      .col-md-3.typeblock
+        img(src='/images/sofa.jpg')
+        a(href='#') Armchairs >
+      .col-md-3.typeblock
+        img(src='/images/sofa.jpg')
+        a(href='#') Armchairs >
+      .col-md-3.typeblock
+        img(src='/images/sofa.jpg')
+        a(href='#') Armchairs >
+      .col-md-3.typeblock
+        img(src='/images/sofa.jpg')
+        a(href='#') Armchairs >
+      .col-md-3.typeblock
+        img(src='/images/sofa.jpg')
+        a(href='#') Armchairs >
+      .col-md-3.typeblock
+        img(src='/images/sofa.jpg')
+        a(href='#') Armchairs >
+    h2.text-center What's new
+    .row.new-full
+      .col-md-6
+        img(src='/images/sofa2.jpg')
+      .col-md-6.text-center
+        p New
+        h3 36 Box Fresh Arrivals
+        p lorem ipsum dolor sit amet
+        button.btn.btn-default(type='button') shop
+    .over-right(style='background-image: url(/images/sofa2.jpg)')
+      .overbox
+        .inner
+          p New
+          h2 36 Box Fresh Arrivals
+          hr
+          p lorem ipsum dolor sit amet
+    .over-left(style='background-image: url(/images/sofa2.jpg)')
+      .overbox
+        .inner
+          p How-to
+          h2 Display Personality
+          hr
+          button.btn.btn-default(type='button') shop
+    .row.item-list
+      .col-md-6.item
+        img(src='/images/sofa2.jpg')
+        h4 Dandy Scandi
+        a(href='#') Shop now >
+      .col-md-6.item
+        img(src='/images/sofa2.jpg')
+        h4 Dandy Scandi
+        a(href='#') Shop now >
+      .col-md-6.item
+        img(src='/images/sofa2.jpg')
+        h4 Dandy Scandi
+        a(href='#') Shop now >
+      .col-md-6.item
+        img(src='/images/sofa2.jpg')
+        h4 Dandy Scandi
+        a(href='#') Shop now >
+    .row.text-block
+      .col-md-offset-2.col-md-8.text-center
+        h4 Design Principles No.7 - Attention to detail
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        a(href='#') Read all our design principles >
+
+    footer.footer
+      p © 2015 Company, Inc.
+
