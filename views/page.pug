@@ -142,12 +142,6 @@ block body
       p © 2015 Company, Inc.
 
   script(type='text/javascript').
-    $('.filter-buttons button').on('click', function() {
-      var $button = $(this);
-      var idx = $button.index() + 1;
-      var $blocks = $button.parents('.filter-buttons').next('.marketing').find('.category-group');
-      $blocks.not('[data-tab="' + idx + '"]').fadeOut(200, function() {
-        $blocks.filter('[data-tab="' + idx + '"]').fadeIn(200);
-      });
+    $('.tabs button').on('click', function() {
+      console.log('here');
     });
-    $('.filter-buttons button:first').click();
