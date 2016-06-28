@@ -241,7 +241,7 @@ footer {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0px 130px;
+  padding: 0px 20px;
 }
 
 .featured-large .text hr {
@@ -260,6 +260,7 @@ footer {
 .featured-large .text .summary {
   line-height: 22px;
   margin-bottom: 40px;
+  width: 70%;
 }
 
 /* featured medium */
@@ -342,7 +343,7 @@ footer {
 .featured-text {
   margin-bottom: 40px;
   text-align: center;
-  padding: 0px 250px;
+  padding: 0 20px;
 }
 
 .featured-text .title {
