@@ -35,19 +35,26 @@ block body
       p
         = page.get('page.description').asText()
 
-    for slice in page.get('page.body').slices
+    - var slices = page.get('page.body').slices
+    for slice, index in slices
       //- Render the right markup for a given slice type.
       case slice.sliceType
 
         when 'featured-tab'
           .featured-tab
             div.tabs
-              for tab in slice.value.toArray()
-                button(type='button')
+              for tab, tabIndex in slice.value.toArray()
+                button(type='button', class=tabIndex === 0 ? 'button--active' : '')
                   = tab.get('label') ? tab.get('label').asText() : 'Noname'
 
         when 'featured-categories'
+          - var hasNextCategory = slices[index + 1] ? slices[index + 1].sliceType === 'featured-categories' : false;
+          - var hasPrevCategory = slices[index - 1] ? slices[index - 1].sliceType === 'featured-categories' : false;
+          if(hasNextCategory)
+            <div class="categories-grouped">
           include partials/categories
+          if(hasPrevCategory)
+            </div>
 
         when 'separator'
           div.separator
@@ -143,5 +150,17 @@ block body
 
   script(type='text/javascript').
     $('.tabs button').on('click', function() {
-      console.log('here');
+      var $button = $(this);
+      var index = $button.index();
+      var $featuredTab = $button.closest('.featured-tab');
+      var $grouped = $featuredTab.next('.categories-grouped');
+      if($grouped.size() > 0) {
+        var $selected = $grouped.find('.categories:nth('+ index +')');
+        if($selected.size() > 0) {
+          $selected.siblings('.categories').removeClass('categories--active');
+          $selected.addClass('categories--active');
+          $button.siblings('button').removeClass('button--active');
+          $button.addClass('button--active');
+        }
+      }
     });

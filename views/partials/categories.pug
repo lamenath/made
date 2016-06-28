@@ -1,4 +1,4 @@
-.categories.centered-layout
+.categories.centered-layout(class=hasPrevCategory ? '' : 'categories--active')
   - var categories = slice.value.toArray()
   if (categories)
     for category in categories

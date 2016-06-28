@@ -13,6 +13,11 @@ a {
   text-decoration: none;
   color: #151515;
   font-size: 13px;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
 }
 
 h1, h2, h3, a, .title {
@@ -22,6 +27,10 @@ h1, h2, h3, a, .title {
 .logo {
   padding: 10px;
   text-align: center;
+}
+
+.logo img {
+  height: 41px;
 }
 
 .title {
@@ -62,6 +71,11 @@ header p {
   font-weight: 200;
 }
 
+footer {
+  padding: 20px;
+  text-align: center;
+}
+
 .wio-link {
   position: fixed;
   top: 40px;
@@ -78,6 +92,7 @@ header p {
   text-transform: uppercase;
   padding: 12px 22px;
   font-size: 14px;
+  cursor: pointer;
 }
 
 /* featured tab */
@@ -90,7 +105,7 @@ header p {
 .featured-tab .tabs {
   display: inline-block;
   margin: auto;
-  border: 1px solid;
+  border: 1px solid #e3e3e3;
 }
 
 .featured-tab .tabs button {
@@ -98,10 +113,15 @@ header p {
   text-transform: uppercase;
   font-size: 14px;
   border: none;
-  border-left: 1px solid;
+  border-left: 1px solid #e3e3e3;
   width: 140px;
   padding: 10px;
-  cursor: pointer;
+  color: #8b8b8b;
+  outline: none;
+}
+
+.featured-tab .tabs button.button--active {
+  color: black;
 }
 
 .featured-tab .tabs button:first-child {
@@ -116,11 +136,14 @@ header p {
 
 /* categories */
 
-.categories {
+.categories-grouped .categories.categories--active {
   display: flex;
+}
+
+.categories {
   flex-wrap: wrap;
-  justify-content: space-between;
   margin-bottom: 40px;
+  display: none;
 }
 
 .categories .category {
