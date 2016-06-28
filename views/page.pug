@@ -30,9 +30,9 @@ block body
         a(href='#') Last&nbsp;chance
   header
     h1(data-wio-id=page.id)
-      = page.get('page.title').asText()
+      = page.get('page.title') ? page.get('page.title').asText() : ''
     p
-      = page.get('page.description').asText()
+      = page.get('page.description') ? page.get('page.description').asText() : ''
 
   - var slices = page.get('page.body').slices
   for slice, index in slices
