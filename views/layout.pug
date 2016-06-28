@@ -10,9 +10,9 @@ head
     link(rel="stylesheet", href="/stylesheets/style.css")
 
     // Required for Previews and Experiments
+    script(src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
     script
       = ctx?"window.prismic = { endpoint: '" + ctx.endpoint + "' };":""
     script(src="//static.cdn.prismic.io/prismic.min.js")
-    script(src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
 body
     block body
