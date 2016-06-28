@@ -299,6 +299,8 @@ hr.separator {
 
 .featured-medium .item .text {
   text-align: center;
+  height: 92px;
+  overflow: hidden;
 }
 
 .featured-medium .item .text .title {
