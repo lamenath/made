@@ -49,10 +49,10 @@ block body
       when 'featured-categories'
         - var hasNextCategory = slices[index + 1] ? slices[index + 1].sliceType === 'featured-categories' : false;
         - var hasPrevCategory = slices[index - 1] ? slices[index - 1].sliceType === 'featured-categories' : false;
-        if(hasNextCategory)
+        if(!hasPrevCategory)
           <div class="categories-grouped">
         include partials/categories
-        if(hasPrevCategory)
+        if(!hasNextCategory)
           </div>
 
       when 'separator'
